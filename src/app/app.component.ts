@@ -16,7 +16,7 @@ export class AppComponent {
 
   formInvalid = true;
 
-  onCalculateArea(form) {
+  onCalculateArea(form: any) {
     if (form.invalid) {
       this.formInvalid = true;
     }

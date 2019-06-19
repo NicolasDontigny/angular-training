@@ -10,8 +10,8 @@ import { Area } from '../../models/area.model';
 export class AreaBoxComponent implements OnInit {
   @Input()
   area: Area | undefined;
-  width: number | undefined;
-  length: number | undefined;
+  width = 0;
+  length = 0;
   areasService: AreasService;
 
   constructor(areasService: AreasService) {
@@ -33,12 +33,20 @@ export class AreaBoxComponent implements OnInit {
     // console.log(this.width);
     // console.log(this.length);
 
-    const editDetails = {
-      area: this.area,
-      newWidth: this.width,
-      newLength: this.length
+    const area = this.area;
+    const width = this.width;
+    const length = this.length
+
+    if (area) {
+      const editDetails = {
+        name: area.name,
+        width: width,
+        length: length,
+        unit: area.unit
+      }
+      this.areasService.editArea(editDetails);
     }
-    this.areasService.editArea(editDetails);
+
   }
 
 }

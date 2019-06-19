@@ -30,7 +30,7 @@ export class AreaCalculatorComponent implements OnInit {
   ngOnInit() {
   }
 
-  onUserSubmit(form) {
+  onUserSubmit(form: any) {
     if (this.areasService.areas.findIndex((area) => area.name === form.value.name) !== -1) {
       this.nameUnique = false;
     } else {
@@ -39,7 +39,7 @@ export class AreaCalculatorComponent implements OnInit {
     this.sendForm.emit(form);
   }
 
-  onFormSubmit(form) {
+  onFormSubmit(form: any) {
     if (form.invalid) {
       return;
     } else if (this.areasService.areas.findIndex((area) => area.name === form.value.name) !== -1) {
