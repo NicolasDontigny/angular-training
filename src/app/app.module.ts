@@ -8,12 +8,14 @@ import { AreaCalculatorComponent } from './area-calculator/area-calculator.compo
 import { ArrayComponent } from './array/array.component';
 
 import { AreasService } from './areas.service';
+import { AreaBoxComponent } from './array/area-box/area-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AreaCalculatorComponent,
-    ArrayComponent
+    ArrayComponent,
+    AreaBoxComponent
   ],
   imports: [
     BrowserModule,

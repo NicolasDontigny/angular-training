@@ -11,8 +11,10 @@
         [(ngModel)]="name"
         (input)="onUserSubmit(form)"
         required
-        #nameControl="ngModel">
+        #nameControl="ngModel"
+        [ngClass]="nameUnique ? '' : 'duplicate'">
       <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">Please enter a name :)</span>
+      <span class="help-block" *ngIf="!nameUnique">Name already exists</span>
     </div>
     <div class="form-group">
       <label for="width">Width:</label>
@@ -25,7 +27,7 @@
         (input)="onUserSubmit(form)"
         required
         #widthControl="ngModel">
-      <span class="help-block" *ngIf="widthControl.invalid && widthControl.touched">Please enter a width :)</span>
+      <span class="help-block" *ngIf="widthControl.invalid && widthControl.touched">Please enter a number :)</span>
     </div>
     <div class="form-group">
       <label for="length">Length</label>
@@ -38,7 +40,7 @@
         (input)="onUserSubmit(form)"
         required
         #lengthControl="ngModel">
-      <span class="help-block" *ngIf="lengthControl.invalid && lengthControl.touched">Please enter a length :)</span>
+      <span class="help-block" *ngIf="lengthControl.invalid && lengthControl.touched">Please enter a number :)</span>
     </div>
 
     <div class="form-group">
@@ -47,10 +49,9 @@
         name="unit" 
         id="unit" 
         class="form-control" 
-        ngModel
-        (change)="onUserSubmit(form)" 
-        [value]="feet">
-        <option *ngFor="let u of units" [value]="u.value">
+        [(ngModel)]="unit"
+        (change)="onUserSubmit(form)">
+        <option *ngFor="let u of units" [value]="u.value" [selected]="true">
           {{ u.display }}
         </option>
       </select>

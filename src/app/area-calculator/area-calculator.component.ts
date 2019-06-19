@@ -9,10 +9,12 @@ import { AreasService } from '../areas.service';
 export class AreaCalculatorComponent implements OnInit {
   // @Output() calculateArea = new EventEmitter<object>();
   @Output() sendForm = new EventEmitter<object>();
-  width: number;
-  length: number;
-  unit: string;
-  name: string;
+  name: string | undefined;
+  width: number | undefined;
+  length: number | undefined;
+  unit = 'feet';
+
+  nameUnique = true;
 
   areasService: AreasService;
 
@@ -29,22 +31,24 @@ export class AreaCalculatorComponent implements OnInit {
   }
 
   onUserSubmit(form) {
-    // const areaDetails = {
-    //   name: form.value.name,
-    //   width: form.value.width,
-    //   length: form.value.length,
-    //   unit: form.value.unit
-    // }
-    // this.calculateArea.emit(areaDetails);
+    if (this.areasService.areas.findIndex((area) => area.name === form.value.name) !== -1) {
+      this.nameUnique = false;
+    } else {
+      this.nameUnique = true;
+    }
     this.sendForm.emit(form);
   }
 
   onFormSubmit(form) {
     if (form.invalid) {
       return;
+    } else if (this.areasService.areas.findIndex((area) => area.name === form.value.name) !== -1) {
+      return;
     }
 
     this.name = undefined;
+    this.width = undefined;
+    this.length = undefined;
 
     const newArea = {
       name: form.value.name,

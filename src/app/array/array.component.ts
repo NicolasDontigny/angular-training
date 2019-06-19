@@ -8,13 +8,20 @@ import { AreasService} from '../areas.service';
 })
 export class ArrayComponent implements OnInit {
   areasList: Array<object>;
+  areasService: AreasService;
 
-  constructor(private areasService: AreasService) { 
-
+  constructor(areasService: AreasService) { 
+    this.areasService = areasService;
+    this.areasList = areasService.areas;
   }
 
   ngOnInit() {
-    this.areasList = this.areasService.areas;
+  }
+
+  clearLocalStorage() {
+    console.log(this.areasService);
+    this.areasService.clearStorage();
+    this.areasList = [];
   }
 
 }

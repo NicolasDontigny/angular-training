@@ -1,0 +1,22 @@
+<div class="area-name">
+  <strong>{{ area.name }}:</strong>
+</div>
+<div class="d-flex align-items-center justify-content-center">
+  <div>
+    <span class="area-surface">
+      {{ area.width * area.length }} 
+      <span *ngIf="area.unit === 'feet'">ft</span>
+      <span *ngIf="area.unit === 'meter'">m</span>
+      <sup>2</sup>
+    </span>
+    (
+    <input type="number" [value]="area.width" class="edit-input" [(ngModel)]="width">
+    <span *ngIf="area.unit === 'feet'">ft</span>
+    <span *ngIf="area.unit === 'meter'">m</span> 
+    by <input type="number" [value]="area.length" class="edit-input" [(ngModel)]="length">
+    <span *ngIf="area.unit === 'feet'">ft</span>
+    <span *ngIf="area.unit === 'meter'">m</span>
+    )
+  </div>
+  <button class="btn btn-warning ml-3" (click)="editArea()">Edit</button>
+</div>
