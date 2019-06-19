@@ -1,0 +1,23 @@
+<h3 class="mb-3">All calculated areas</h3>
+<div 
+  class="areas-list-item"
+  *ngFor="let area of areasList">
+    <div class="area-name">
+      <strong>{{ area.name }}:</strong>
+    </div>
+    <div>
+      <span class="area-surface">
+        {{ area.width * area.length }} 
+        <span *ngIf="area.unit === 'feet'">ft</span>
+        <span *ngIf="area.unit === 'meter'">m</span>
+        <sup>2</sup>
+      </span>
+      ({{ area.width }}
+      <span *ngIf="area.unit === 'feet'">ft</span>
+      <span *ngIf="area.unit === 'meter'">m</span> 
+      by {{ area.length }}
+      <span *ngIf="area.unit === 'feet'">ft</span>
+      <span *ngIf="area.unit === 'meter'">m</span>
+      )
+    </div>
+</div>

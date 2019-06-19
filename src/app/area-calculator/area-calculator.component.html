@@ -1,0 +1,61 @@
+<div class="">
+  <h3>Calculate the Area</h3>
+  <form (ngSubmit)="onFormSubmit(form)" #form="ngForm">
+    <div class="form-group">
+      <label for="name">Name of Area:</label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        class="form-control" 
+        [(ngModel)]="name"
+        (input)="onUserSubmit(form)"
+        required
+        #nameControl="ngModel">
+      <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">Please enter a name :)</span>
+    </div>
+    <div class="form-group">
+      <label for="width">Width:</label>
+      <input 
+        type="number" 
+        id="width" 
+        name="width" 
+        class="form-control" 
+        [(ngModel)]="width"
+        (input)="onUserSubmit(form)"
+        required
+        #widthControl="ngModel">
+      <span class="help-block" *ngIf="widthControl.invalid && widthControl.touched">Please enter a width :)</span>
+    </div>
+    <div class="form-group">
+      <label for="length">Length</label>
+      <input 
+        type="number" 
+        id="length" 
+        name="length" 
+        class="form-control" 
+        [(ngModel)]="length"
+        (input)="onUserSubmit(form)"
+        required
+        #lengthControl="ngModel">
+      <span class="help-block" *ngIf="lengthControl.invalid && lengthControl.touched">Please enter a length :)</span>
+    </div>
+
+    <div class="form-group">
+      <label for="unit">Unit of Measure</label>
+      <select 
+        name="unit" 
+        id="unit" 
+        class="form-control" 
+        ngModel
+        (change)="onUserSubmit(form)" 
+        [value]="feet">
+        <option *ngFor="let u of units" [value]="u.value">
+          {{ u.display }}
+        </option>
+      </select>
+    </div>
+  
+    <input type="submit" class="btn btn-primary" value="Add this Area" [disabled]="form.invalid">
+  </form>
+</div>
