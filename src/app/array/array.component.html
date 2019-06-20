@@ -1,6 +1,6 @@
 <h3 class="mb-3">All calculated areas <button class="btn btn-danger" (click)="clearLocalStorage()">Clear All</button></h3>
 <div 
   class="areas-list-item"
-  *ngFor="let area of areasList">
-    <app-area-box [area]="area"></app-area-box>
+  *ngFor="let area of areasList; let i = index">
+    <app-area-box [area]="area" [index]="i + 1"></app-area-box>
 </div>

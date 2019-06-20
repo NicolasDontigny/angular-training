@@ -10,6 +10,8 @@ import { Area } from '../../models/area.model';
 export class AreaBoxComponent implements OnInit {
   @Input()
   area: Area | undefined;
+  @Input()
+  index: number;
   width = 0;
   length = 0;
   areasService: AreasService;
