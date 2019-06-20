@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AreasService } from '../../areas.service';
-import { Area } from '../../models/area.model';
+import { AreasService } from '../../../areas.service';
+import { Area } from '../../../models/area.model';
 
 @Component({
   selector: 'app-area-box',
@@ -37,18 +37,23 @@ export class AreaBoxComponent implements OnInit {
 
     const area = this.area;
     const width = this.width;
-    const length = this.length
+    const length = this.length;
 
     if (area) {
       const editDetails = {
         name: area.name,
-        width: width,
-        length: length,
-        unit: area.unit
+        width,
+        length,
+        unit: area.unit,
+        building: area.building
       }
       this.areasService.editArea(editDetails);
     }
 
+  }
+
+  assignBuilding(building) {
+    this.areasService.assignBuilding(this.area, building);
   }
 
 }

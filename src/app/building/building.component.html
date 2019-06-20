@@ -1,0 +1,6 @@
+<h3>{{ this.capitalize(chosenBuilding) }} Areas: </h3>
+<div 
+  class="areas-list-item"
+  *ngFor="let area of chosenAreas; let i = index">
+    <app-area-box [area]="area" [index]="i + 1"></app-area-box>
+</div>

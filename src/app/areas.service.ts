@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class AreasService {
   areas: Array<Area>;
   private areasObservable = new Subject<Area[]>();
+  private areasChanged = new Subject<void>();
 
   constructor() {
     if (!localStorage.getItem('areasList')) {
@@ -51,6 +52,7 @@ export class AreasService {
 
     this.areas[areasIndex].width = editDetails.width;
     this.areas[areasIndex].length = editDetails.length;
+    this.areas[areasIndex].building = editDetails.building;
 
     const areasList = localStorage.getItem('areasList');
 
@@ -61,6 +63,7 @@ export class AreasService {
       });
       editLocalStorageArray[localStorageIndex].width = editDetails.width;
       editLocalStorageArray[localStorageIndex].length = editDetails.length;
+      editLocalStorageArray[localStorageIndex].building = editDetails.building;
 
       localStorage.setItem('areasList', JSON.stringify(editLocalStorageArray));
     }
@@ -70,6 +73,14 @@ export class AreasService {
   }
 
   getAreasArray = () => this.areas.slice();
+  
+  getAreasChanged = () => this.areasChanged.asObservable();
 
   getAreas = () => this.areasObservable.asObservable();
+
+  assignBuilding(area, building) {
+    area.building = building;
+    this.editArea(area);
+    this.areasChanged.next();
+  }
 }

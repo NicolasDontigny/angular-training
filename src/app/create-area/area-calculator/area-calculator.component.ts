@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AreasService } from '../areas.service';
+import { AreasService } from '../../areas.service';
 
 @Component({
   selector: 'app-area-calculator',
@@ -54,7 +54,8 @@ export class AreaCalculatorComponent implements OnInit {
       name: form.value.name,
       width: form.value.width,
       length: form.value.length,
-      unit: form.value.unit
+      unit: form.value.unit,
+      building: 'none'
     }
 
     this.areasService.addArea(newArea);

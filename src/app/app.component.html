@@ -1,5 +1,17 @@
 <div class="container py-3">
 
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/house" routerLinkActive="active">House</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/work" routerLinkActive="active">Work</a>
+    </li>
+  </ul>
+
   <div class="text-center">
     <h1>{{ title }}</h1>
   </div>
@@ -10,39 +22,6 @@
 
   <hr class="my-5">
 
-  <div class="py-3 row">
-    <div class="col-5">
-      <app-area-calculator (sendForm)="onCalculateArea($event)"></app-area-calculator>
-
-      <div class="area mt-3" 
-        *ngIf="formInvalid">
-        Please fill all fields
-      </div>
-
-      <div *ngIf="!formInvalid">
-        <div>
-          <span class="area mt-3">{{ areaDetails.name }} Area: {{ areaDetails.width * areaDetails.length }}
-            <span *ngIf="areaDetails.unit === 'feet'">ft</span>
-            <span *ngIf="areaDetails.unit === 'meter'">m</span>
-            <sup>2</sup>
-          </span>
-        </div>
-        <div>
-          "Based on a {{ areaDetails.width }} 
-          <span *ngIf="areaDetails.unit === 'feet'">ft</span>
-          <span *ngIf="areaDetails.unit === 'meter'">m</span>
-          by {{ areaDetails.length }} 
-          <span *ngIf="areaDetails.unit === 'feet'">ft</span>
-          <span *ngIf="areaDetails.unit === 'meter'">m</span>
-          measurement"
-        </div>
-      </div>
-
-    </div>
-
-    <div class="sidebar col-7 text-center">
-      <app-array></app-array>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 
 </div>

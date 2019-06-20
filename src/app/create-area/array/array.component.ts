@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AreasService} from '../areas.service';
+import { AreasService} from '../../areas.service';
 import { Observable } from 'rxjs';
-import { Area } from '../models/area.model';
+import { Area } from '../../models/area.model';
 
 @Component({
   selector: 'app-array',
@@ -22,9 +22,9 @@ export class ArrayComponent implements OnInit {
 
   ngOnInit() {
     this.areasObservable.subscribe((value) => {
-      console.log('Observable value: ', value);
+      // console.log('Observable value: ', value);
       this.areasList = value;
-      console.log(this.areasList);
+      // console.log(this.areasList);
     });
   }
 

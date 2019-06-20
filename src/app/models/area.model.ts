@@ -3,4 +3,5 @@ export interface Area {
     width: number;
     length: number;
     unit: string;
+    building: string;
 }
